@@ -1,0 +1,49 @@
+.content{
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    padding: 50px;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+h1{
+    color: rebeccapurple;
+    font-size: 100px;
+}
+
+#chanceArea{
+    color: red;
+    font-size: 40px;
+}
+#resultArea{
+    color: green;
+    font-size: 40px;
+}
+#gameResult{
+    color: blue;
+    font-size: 40px;
+}
+#historyArea{
+    color: white;
+    font-size: 40px;
+}
+#timecount{
+    color: red;
+    font-size: 40px;
+}
+
+#userNum{
+    padding: 10px;
+}
+
+button {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+    padding: 10px;
+    font-weight: 800;
+}

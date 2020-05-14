@@ -12,11 +12,11 @@ function timecounting() {
     myTime = setInterval(() => {
         time -= 1
         document.getElementById('timecount').innerHTML = time
-        if(time == 0){
+        if (time == 0) {
             timeOut()
             document.getElementById("resultArea").innerHTML = `${loiNhacGame}`
         }
-        
+
         loiNhacGame = "Over time, you lose"
     }, 1000)// every 1 second, it will add 1 into time variable (computer use millisecond so 1000 is 1 second)
 }
@@ -25,40 +25,58 @@ timecounting()
 function timeOut() {
     clearInterval(myTime);
 }
+
 function guess() {
     let userNum = document.getElementById("userNum").value//so nguoi dung nhap vao // cai nay la cai gi?}
     if (time > 0) {
         if (chance > 0) {
+            chance--
+            document.getElementById("chanceArea").innerHTML = `your chance now :${chance}`
             if (soNgauNhien > userNum) {
                 loiNhacGame = "too low"
-                chance--
             }
             // 6. if computer num < user num, "too high"
             else if (soNgauNhien < userNum) {
                 loiNhacGame = "too high"
-                chance--
             }// 7. if computer num === user num, "correct"
             else if (soNgauNhien == userNum) {
                 loiNhacGame = "correct"
             }
         } else {
-            loiNhacGame = "you are lose"
+            loiNhacGame = "no more chance,you are lose"
+            timeOut()
         }
     } else {
         timeOut()
     }
     //keep the history
-    
-    if(history.length <5){
+
+    if (history.length < 5) {
         history.push(userNum)
     }
-    else{
-        alert("No more chance")
+    else if(history.length = 5) {
+        loiNhacGame : "hết lượt"
     }
-    
+
     // 8. show the result to user
     document.getElementById("resultArea").innerHTML = `${loiNhacGame}`
     document.getElementById("historyArea").innerHTML = `History${history}`
+}
+
+function reset() {
+    chance = 5;
+    history = []
+    soNgauNhien = Math.floor(Math.random() * 100 + 1);
+
+    document.getElementById("timecount").innerHTML = time
+    document.getElementById("chanceArea").innerHTML = `${chance}`
+    document.getElementById("resultArea").innerHTML = ''
+    document.getElementById("historyArea").innerHTML = `${chance}`
+    document.getElementById("guess").disabled = false;
+
+    
+    timecounting()
+    timeOut()
 }
 
 // 1. make the chance feature (only can have 5 chance)
